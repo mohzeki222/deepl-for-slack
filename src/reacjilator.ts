@@ -9,6 +9,9 @@ export function lang(event: ReactionAddedEvent): string | null {
     const matched = reactionName.match(/(?!flag-\b)\b\w+/);
     if (matched != null) {
       const country = matched[0];
+      if (country === "tw") { // 台湾の場合は繁体字中国語
+        return "zh-TW";
+      }
       return reactionToLang[country];
     }
   } else { // jp, fr, etc.
