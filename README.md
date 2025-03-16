@@ -60,7 +60,7 @@ Use the [App Manifest file](https://github.com/seratch/deepl-for-slack/blob/mast
 
 ### Deploy to Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/seratch/deepl-for-slack/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/mohzeki222/deepl-for-slack/tree/master)
 
 * Confirm [your billing settings](https://dashboard.heroku.com/account/billing)
 * Deploy this app with the following env variables
