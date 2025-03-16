@@ -6,7 +6,7 @@ const orderedLangNames = (
   process.env.DEEPL_RUNNER_LANGUAGES ||
   "en,ja,zh,de,fr,it,es,nl,pl,pt,ru,bg,cs,da,el,et,fi,hu,id,lt,ro,sk,sl,sv,tr,uk"
 ).split(",");
-const lanaguageOptions: PlainTextOption[] = orderedLangNames
+const languageOptions: PlainTextOption[] = orderedLangNames
   .filter((l) => langToReaction[l])
   .map((lang) => {
     return {
@@ -26,6 +26,9 @@ export async function openModal(client: WebClient, triggerId: string) {
 }
 
 export function buildNewModal(lang: string): View {
+  if (lang === "zh" && langToReaction["zh-TW"]) {
+    lang = "zh-TW"; // 台湾向けに修正
+  }
   return {
     type: "modal",
     callback_id: "run-translation",
@@ -72,7 +75,7 @@ export function buildNewModal(lang: string): View {
             },
             value: lang,
           },
-          options: lanaguageOptions,
+          options: languageOptions,
         },
         label: {
           type: "plain_text",
@@ -85,6 +88,9 @@ export function buildNewModal(lang: string): View {
 }
 
 export function buildLoadingView(lang: string, text: string): View {
+  if (lang === "zh" && langToReaction["zh-TW"]) {
+    lang = "zh-TW";
+  }
   return {
     type: "modal",
     title: {
@@ -118,6 +124,9 @@ export function buildResultView(
   sourceText: string,
   translatedText: string
 ): View {
+  if (lang === "zh" && langToReaction["zh-TW"]) {
+    lang = "zh-TW";
+  }
   return {
     type: "modal",
     callback_id: "new-runner",
